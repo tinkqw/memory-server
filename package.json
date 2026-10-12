@@ -1,0 +1,44 @@
+{
+  "name": "memory-mcp-server",
+  "version": "1.0.0",
+  "description": "Local memory MCP server for Claude Code and other agents (SQLite + FTS5 + vector search)",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "memory-core-block": "dist/cli-core-block.js",
+    "memory-detect-project": "dist/cli-detect-project.js",
+    "memory-observation-block": "dist/cli-observation-block.js",
+    "memory-store": "dist/cli-store.js",
+    "memory-consolidate": "dist/cli-consolidate.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test:p2-integrity": "tsx --test tests/p2-integrity.test.ts",
+    "test:p2-gateway": "tsx --test tests/gateway.test.ts",
+    "start": "node dist/index.js",
+    "start:gateway": "node dist/gateway-server.js",
+    "health:readonly": "tsx scripts/health-readonly.ts",
+    "core-block": "node dist/cli-core-block.js",
+    "detect-project": "node dist/cli-detect-project.js",
+    "observation-block": "node dist/cli-observation-block.js",
+    "store": "node dist/cli-store.js",
+    "consolidate": "node dist/cli-consolidate.js",
+    "repair:vec": "tsx scripts/repair-vec-index.ts",
+    "test:supersede": "tsx --test tests/supersede.test.ts"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.8.1",
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "better-sqlite3": "^11.0.0",
+    "nodejieba": "^2.6.0",
+    "sqlite-vec": "^0.1.7",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT"
+}
